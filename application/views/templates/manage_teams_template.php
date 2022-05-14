@@ -20,10 +20,10 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Manage Teams</span></a>
+                    <a class="nav-link" href="<?php echo base_url('team'); ?>">Manage Teams</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Manage Team Members</a>
+                    <a class="nav-link" href="<?php echo base_url('member'); ?>">Manage Member Members</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Manage Team Member Comments</a>
@@ -157,14 +157,15 @@
         function setTeamID(teamId) {
             $("#teamID").val(teamId);
         }
+
         function deleteTeam(teamId) {
             console.log(teamId);
 
             $.ajax({
                     url: SITE_URL + "team/delete/" + $("#teamID").val(),
                     method: "POST",
-                    data:{
-                        teamID:$("#teamID").val()
+                    data: {
+                        teamID: $("#teamID").val()
                     },
                     beforeSend: function() {
                         console.log("Deleting Data")
