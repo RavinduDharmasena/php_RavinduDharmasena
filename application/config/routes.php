@@ -49,6 +49,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'TeamController';
+$route['team']['GET'] = 'TeamController/viewManageTeams';
+$route['team/(:num)']['POST'] = 'TeamController/getTeamData';
+$route['team/delete/(:num)']['POST'] = 'TeamController/deleteTeamById';
+$route['team/update/(:num)']['POST'] = 'TeamController/updateTeamById';
+$route['team']['POST'] = 'TeamController/addTeams';
+
+$route['member']['GET'] = 'MemberController/viewManageMembers';
+$route['member/(:num)']['POST'] = 'MemberController/getMemberData';
+$route['member/delete/(:num)']['POST'] = 'MemberController/deleteMemberById';
+$route['member/update/(:num)']['POST'] = 'MemberController/updateMemberById';
+$route['member']['POST'] = 'MemberController/addMembers';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
