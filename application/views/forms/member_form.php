@@ -68,74 +68,90 @@
 </form>
 
 <script>
+    function isEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
+
     function validateForm() {
         let isValid = true;
-        if(!$("#txtMemberName").val()){
+        if (!$("#txtMemberName").val()) {
             $("#nameValidationError").html("Name is required");
             $("#nameValidationError").addClass("show");
             isValid = false;
-        }
-        else{
+        } else {
             $("#nameValidationError").html("");
             $("#nameValidationError").removeClass("show");
         }
 
-        if(!$("#chkMemberRole").val()){
+        if (!$("#chkMemberRole").val()) {
             $("#roleValidationError").html("Role is required");
             $("#roleValidationError").addClass("show");
             isValid = false;
-        }
-        else{
+        } else {
             $("#roleValidationError").html("");
             $("#roleValidationError").removeClass("show");
         }
 
-        if(!$("#txtMemberEmail").val()){
+        if (!$("#txtMemberEmail").val()) {
             $("#emailValidationError").html("Email is required");
             $("#emailValidationError").addClass("show");
             isValid = false;
-        }
-        else{
+        } else {
             $("#emailValidationError").html("");
             $("#emailValidationError").removeClass("show");
         }
 
-        if(!$("#chkMemberTeam").val()){
+        if(!isEmail($("#txtMemberEmail").val())){
+            $("#emailValidationError").html("Email is invalid");
+            $("#emailValidationError").addClass("show");
+            isValid = false;
+        } else {
+            $("#emailValidationError").html("");
+            $("#emailValidationError").removeClass("show");
+        }
+
+        if (!$("#chkMemberTeam").val()) {
             $("#teamValidationError").html("Team is required");
             $("#teamValidationError").addClass("show");
             isValid = false;
-        }
-        else{
+        } else {
             $("#teamValidationError").html("");
             $("#teamValidationError").removeClass("show");
         }
 
-        if(!$("#txtmemberRoute").val()){
+        if (!$("#txtmemberRoute").val()) {
             $("#RouteValidationError").html("Current Route is required");
             $("#RouteValidationError").addClass("show");
             isValid = false;
-        }
-        else{
+        } else {
             $("#RouteValidationError").html("");
             $("#RouteValidationError").removeClass("show");
         }
 
-        if(!$("#txtMemberTelephone").val()){
+        if (!$("#txtMemberTelephone").val()) {
             $("#telephoneValidationError").html("Telephone is required");
             $("#telephoneValidationError").addClass("show");
             isValid = false;
-        }
-        else{
+        } else {
             $("#telephoneValidationError").html("");
             $("#telephoneValidationError").removeClass("show");
         }
 
-        if(!$("[name='memberStatus']:checked").val()){
+        if ($("#txtMemberTelephone").val().length !== 10) {
+            $("#telephoneValidationError").html("Telephone is invalid");
+            $("#telephoneValidationError").addClass("show");
+            isValid = false;
+        } else {
+            $("#telephoneValidationError").html("");
+            $("#telephoneValidationError").removeClass("show");
+        }
+
+        if (!$("[name='memberStatus']:checked").val()) {
             $("#statusValidationError").html("Status is required");
             $("#statusValidationError").addClass("show");
             isValid = false;
-        }
-        else{
+        } else {
             $("#statusValidationError").html("");
             $("#statusValidationError").removeClass("show");
         }
