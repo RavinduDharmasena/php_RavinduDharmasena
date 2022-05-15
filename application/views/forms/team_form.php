@@ -1,8 +1,9 @@
 <form id="<?php echo $formID; ?>">
     <input type="hidden" name="teamID" id="teamID">
     <div class="form-group">
-        <label for="teamName">Name</label>
+        <label for="txtTeamName">Name</label>
         <input type="text" class="form-control" id="txtTeamName" name="teamName" aria-describedby="teamName" placeholder="Team Name">
+        <span class="error-message" id="teamValidationError"></span>
     </div>
     <div class="form-group">
         <label for="chkManager">Team Status</label>
@@ -20,10 +21,36 @@
                 </label>
             </div>
         </div>
+        <span class="error-message" id="statusValidationError"></span>
     </div>
 </form>
 
 <script>
+    function validateForm() {
+        let isValid = true;
+        if(!$("#txtTeamName").val()){
+            $("#teamValidationError").html("Team is required");
+            $("#teamValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#teamValidationError").html("");
+            $("#teamValidationError").removeClass("show");
+        }
+
+        if(!$("[name='teamStatus']:checked").val()){
+            $("#statusValidationError").html("Status is required");
+            $("#statusValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#statusValidationError").html("");
+            $("#statusValidationError").removeClass("show");
+        }
+
+        return isValid;
+    }
+
     function prepareSaveForm() {
         $("#teamForm")[0].reset();
         $("#addUpdateTeamModalTitle").html('Add Team');

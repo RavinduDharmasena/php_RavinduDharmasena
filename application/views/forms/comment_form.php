@@ -1,8 +1,8 @@
 <form id="commentForm">
     <input type="hidden" name="commentID" id="commentID">
     <div class="form-group">
-        <label for="chkteam">Team</label>
-        <select name="team" id="chkteam" onchange="getMembersByTeamId(this.value)" class="form-control">
+        <label for="chkTeam">Team</label>
+        <select name="team" id="chkTeam" onchange="getMembersByTeamId(this.value)" class="form-control">
             <option value="" selected disabled>Please Select</option>
             <?php
             foreach ($teamData as $team) {
@@ -12,12 +12,14 @@
             }
             ?>
         </select>
+        <span class="error-message" id="teamValidationError"></span>
     </div>
     <div class="form-group">
         <label for="chkMember">Member</label>
         <select name="member" id="chkMember" class="form-control">
             <option value="" selected disabled>Please Select</option>
         </select>
+        <span class="error-message" id="memberValidationError"></span>
     </div>
     <div class="form-group">
         <label for="chkManager">Manager</label>
@@ -31,14 +33,61 @@
             }
             ?>
         </select>
+        <span class="error-message" id="managerValidationError"></span>
     </div>
     <div class="form-group">
-        <label for="chkcommentTeam">Comment</label>
+        <label for="txtAreaComment">Comment</label>
         <textarea class="form-control" name="comment" id="txtAreaComment" cols="30" rows="10"></textarea>
+        <span class="error-message" id="commentValidationError"></span>
     </div>
 </form>
 
 <script>
+    function validateForm() {
+        let isValid = true;
+        if(!$("#chkTeam").val()){
+            $("#teamValidationError").html("Team is required");
+            $("#teamValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#teamValidationError").html("");
+            $("#teamValidationError").removeClass("show");
+        }
+
+        if(!$("#chkMember").val()){
+            $("#memberValidationError").html("Member is required");
+            $("#memberValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#memberValidationError").html("");
+            $("#memberValidationError").removeClass("show");
+        }
+
+        if(!$("#chkManager").val()){
+            $("#managerValidationError").html("Manager is required");
+            $("#managerValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#managerValidationError").html("");
+            $("#managerValidationError").removeClass("show");
+        }
+
+        if($("#txtAreaComment").val() === ""){
+            $("#commentValidationError").html("Comment is required");
+            $("#commentValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#commentValidationError").html("");
+            $("#commentValidationError").removeClass("show");
+        }
+
+        return isValid;
+    }
+
     function getMembersByTeamId(teamId) {
         $.ajax({
                 url: SITE_URL + "member/team/" + teamId,
@@ -68,10 +117,11 @@
         $("#addUpdateTeamModalTitle").html('Add Comment');
         $("#btnSave").show();
         $("#btnUpdate").hide();
-        $("#chkteam")[0].selectedIndex = 0
+        $("#chkTeam")[0].selectedIndex = 0
         $("#chkMember")[0].selectedIndex = 0
         $("#chkManager")[0].selectedIndex = 0
         $("#txtAreaComment").html('');
+        $(".error-message").removeClass("show")
     }
 
     function updateForm() {

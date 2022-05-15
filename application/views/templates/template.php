@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.dataTables.min.css'); ?>">
     <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery.dataTables.min.js'); ?>"></script>
+    <style>
+        .error-message {
+            color: red;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .show{
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,7 +32,7 @@
     </div>
     <script src="<?php echo base_url('assets/js/popper.min.js'); ?>" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+
 
     <script>
         const SITE_URL = "<?php echo base_url(); ?>";

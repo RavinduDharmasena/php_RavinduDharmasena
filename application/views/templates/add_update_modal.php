@@ -26,6 +26,9 @@
 
 <script>
     function submitForm() {
+        if(!validateForm()){
+            return;
+        }
         $.ajax({
                 url: "<?php echo $formSubmitURL; ?>",
                 method: "POST",

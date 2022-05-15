@@ -34,13 +34,14 @@ class MemberController extends CI_Controller {
         $memberTelephone = $this->input->post('memberTelephone');
         $memberRole = $this->input->post('memberRole');
         $memberStatus = $this->input->post('memberStatus');
-        $insertedID = $this->MemberModel->saveMember($memberName,$memberRole,$memberEmail,$memberJoinedDate,$memberTeam
-        ,$memberRoute,$memberTelephone,$memberStatus);
-
+        
         if($this->input->post('memberRole') == "MANAGER" && count($this->MemberModel->getManagerByTeamID($memberTeam)) > 0){
             echo "error####An manager exists for the given group";
             die();
         }
+        
+        $insertedID = $this->MemberModel->saveMember($memberName,$memberRole,$memberEmail,$memberJoinedDate,$memberTeam
+        ,$memberRoute,$memberTelephone,$memberStatus);
         
         if($insertedID > 0){
             echo "success####Member has been saved successfully";

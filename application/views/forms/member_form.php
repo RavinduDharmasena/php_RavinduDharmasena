@@ -1,28 +1,31 @@
 <form id="memberForm">
     <input type="hidden" name="memberID" id="memberID">
     <div class="form-group">
-        <label for="memberName">Name</label>
+        <label for="txtMemberName">Name</label>
         <input type="text" class="form-control" id="txtMemberName" name="memberName" aria-describedby="memberName" placeholder="Name">
+        <span class="error-message" id="nameValidationError"></span>
     </div>
     <div class="form-group">
-        <label for="chkmemberRole">Role</label>
-        <select name="memberRole" id="chkmemberRole" class="form-control">
+        <label for="chkMemberRole">Role</label>
+        <select name="memberRole" id="chkMemberRole" class="form-control">
             <option value="" selected disabled>Please Select</option>
             <option value="MANAGER">Manager</option>
             <option value="MEMBER">Team Member</option>
         </select>
+        <span class="error-message" id="roleValidationError"></span>
     </div>
     <div class="form-group">
         <label for="memberEmail">Email</label>
-        <input type="text" class="form-control" id="txtMemberEmail" name="memberEmail" aria-describedby="memberEmail" placeholder="Email">
+        <input type="email" class="form-control" id="txtMemberEmail" name="memberEmail" aria-describedby="memberEmail" placeholder="Email">
+        <span class="error-message" id="emailValidationError"></span>
     </div>
     <div class="form-group">
         <label for="memberJoinedDate">Joined Date</label>
-        <input type="date" class="form-control" id="txtMemberJoinedDate" name="memberJoinedDate" aria-describedby="memberJoinedDate" placeholder="<?php echo date('Y-m-d'); ?>">
+        <input type="date" class="form-control" id="txtMemberJoinedDate" name="memberJoinedDate" aria-describedby="memberJoinedDate" value="<?php echo date('Y-m-d'); ?>">
     </div>
     <div class="form-group">
-        <label for="chkmemberTeam">Team</label>
-        <select name="memberTeam" id="chkmemberTeam" class="form-control">
+        <label for="chkMemberTeam">Team</label>
+        <select name="memberTeam" id="chkMemberTeam" class="form-control">
             <option value="" selected disabled>Please Select</option>
             <?php
             foreach ($teamData as $team) {
@@ -32,14 +35,17 @@
             }
             ?>
         </select>
+        <span class="error-message" id="teamValidationError"></span>
     </div>
     <div class="form-group">
-        <label for="memberRoute">Current Route</label>
+        <label for="txtmemberRoute">Current Route</label>
         <input type="text" class="form-control" id="txtmemberRoute" name="memberRoute" aria-describedby="memberRoute" placeholder="Route">
+        <span class="error-message" id="RouteValidationError"></span>
     </div>
     <div class="form-group">
-        <label for="memberTelephone">Telephone No</label>
+        <label for="txtMemberTelephone">Telephone No</label>
         <input type="number" class="form-control" id="txtMemberTelephone" name="memberTelephone" aria-describedby="memberTelephone" placeholder="Telephone">
+        <span class="error-message" id="telephoneValidationError"></span>
     </div>
     <div class="form-group">
         <label for="memberStatus">Member Status</label>
@@ -57,16 +63,93 @@
                 </label>
             </div>
         </div>
+        <span class="error-message" id="statusValidationError"></span>
     </div>
 </form>
 
 <script>
+    function validateForm() {
+        let isValid = true;
+        if(!$("#txtMemberName").val()){
+            $("#nameValidationError").html("Name is required");
+            $("#nameValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#nameValidationError").html("");
+            $("#nameValidationError").removeClass("show");
+        }
+
+        if(!$("#chkMemberRole").val()){
+            $("#roleValidationError").html("Role is required");
+            $("#roleValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#roleValidationError").html("");
+            $("#roleValidationError").removeClass("show");
+        }
+
+        if(!$("#txtMemberEmail").val()){
+            $("#emailValidationError").html("Email is required");
+            $("#emailValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#emailValidationError").html("");
+            $("#emailValidationError").removeClass("show");
+        }
+
+        if(!$("#chkMemberTeam").val()){
+            $("#teamValidationError").html("Team is required");
+            $("#teamValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#teamValidationError").html("");
+            $("#teamValidationError").removeClass("show");
+        }
+
+        if(!$("#txtmemberRoute").val()){
+            $("#RouteValidationError").html("Current Route is required");
+            $("#RouteValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#RouteValidationError").html("");
+            $("#RouteValidationError").removeClass("show");
+        }
+
+        if(!$("#txtMemberTelephone").val()){
+            $("#telephoneValidationError").html("Telephone is required");
+            $("#telephoneValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#telephoneValidationError").html("");
+            $("#telephoneValidationError").removeClass("show");
+        }
+
+        if(!$("[name='memberStatus']:checked").val()){
+            $("#statusValidationError").html("Status is required");
+            $("#statusValidationError").addClass("show");
+            isValid = false;
+        }
+        else{
+            $("#statusValidationError").html("");
+            $("#statusValidationError").removeClass("show");
+        }
+
+        return isValid;
+    }
+
     function prepareSaveForm() {
         $("#memberForm")[0].reset();
         $("#addUpdateTeamModalTitle").html('Add Team');
         $("#btnSave").show();
         $("#btnUpdate").hide();
-        $("#chkmemberRole")[0].selectedIndex = 0
+        $("#chkMemberRole")[0].selectedIndex = 0
+        $(".error-message").removeClass("show")
     }
 
     function updateForm() {
