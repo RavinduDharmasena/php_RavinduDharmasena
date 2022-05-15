@@ -11,7 +11,7 @@ class TeamController extends CI_Controller {
     public function viewManageTeams()
     {
         $data['teamData'] = $this->TeamModel->getTeams();
-        $this->template->load('templates/manage_teams_template','pages/manage_teams',$data);
+        $this->template->load('templates/template','pages/manage_teams',$data);
     }
 
     public function addTeams()

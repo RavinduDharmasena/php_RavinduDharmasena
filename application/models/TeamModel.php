@@ -33,15 +33,17 @@ class TeamModel extends CI_Model
 
     public function updateTeam($teamID,$teamName = null,$teamStatus = null)
     {
+        $data = array();
+
         if($teamName){
-            $this->db->set('name', $teamName);
+            $data['name'] = $teamName;
         }
 
         if($teamStatus){
-            $this->db->set('status', $teamStatus);
+            $data['status'] = $teamStatus;
         }
 
         $this->db->where('id', $teamID);
-        return $this->db->update('team');
+        return $this->db->update('team',$data);
     }
 }
