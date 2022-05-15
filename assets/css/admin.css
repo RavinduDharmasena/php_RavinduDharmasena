@@ -1,0 +1,9 @@
+.error-message {
+    color: red;
+    margin-top: 4px;
+    display: none;
+}
+
+.show{
+    display: block;
+}

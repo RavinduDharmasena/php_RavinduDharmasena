@@ -8,19 +8,9 @@
     <title>Member Management Admin</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.dataTables.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/admin.css'); ?>">
     <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery.dataTables.min.js'); ?>"></script>
-    <style>
-        .error-message {
-            color: red;
-            margin-top: 4px;
-            display: none;
-        }
-
-        .show{
-            display: block;
-        }
-    </style>
 </head>
 
 <body>
