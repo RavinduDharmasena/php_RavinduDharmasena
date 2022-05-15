@@ -1,7 +1,9 @@
 <?php 
     $addUpdateModalData['addButtonCaption'] = 'Add Member';
     $addUpdateModalData['addModalCaption'] = 'Add Member';
-    $addUpdateModalData['modalFormFilePath'] = 'forms/team_member.php';
+    $addUpdateModalData['addModalSaveButtonCaption'] = 'Save Member';
+    $addUpdateModalData['addModalUpdateButtonCaption'] = 'Update Member';
+    $addUpdateModalData['modalFormFilePath'] = 'forms/member_form.php';
     $addUpdateModalData['formSubmitURL'] = base_url('member');
     $addUpdateModalData['formID'] = 'memberForm';
     $this->load->view('templates/add_update_modal.php',$addUpdateModalData);

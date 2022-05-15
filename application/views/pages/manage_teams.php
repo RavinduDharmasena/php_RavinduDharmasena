@@ -1,6 +1,8 @@
 <?php 
     $addUpdateModalData['addButtonCaption'] = 'Add Team';
     $addUpdateModalData['addModalCaption'] = 'Add Team';
+    $addUpdateModalData['addModalSaveButtonCaption'] = 'Save Team';
+    $addUpdateModalData['addModalUpdateButtonCaption'] = 'Update Team';
     $addUpdateModalData['modalFormFilePath'] = 'forms/team_form.php';
     $addUpdateModalData['formSubmitURL'] = base_url('team');
     $addUpdateModalData['formID'] = 'teamForm';

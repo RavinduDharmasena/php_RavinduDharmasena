@@ -14,7 +14,7 @@ class MemberController extends CI_Controller {
     {
         $data['memberData'] = $this->MemberModel->getMembers();
         $data['teamData'] = $this->TeamModel->getTeams();
-        $this->template->load('templates/manage_members_template','pages/manage_members',$data);
+        $this->template->load('templates/template','pages/manage_members',$data);
     }
 
     public function addMembers()

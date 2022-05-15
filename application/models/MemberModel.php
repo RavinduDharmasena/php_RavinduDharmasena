@@ -22,7 +22,10 @@ class MemberModel extends CI_Model
 
     public function getMembers()
     {
-        return $this->db->select("*")->from("member")->where("status !=","-1")->get()->result();
+        return $this->db->select(
+            "m.id,m.name, m.email, m.telephone_no, m.joined_date, m.current_route, m.status,t.name AS 'team_name'"
+        )
+        ->from("member m")->join("team t","m.teamID = t.id")->where("m.status !=","-1")->get()->result();
     }
 
     public function getMemberById($memberID)

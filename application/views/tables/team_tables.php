@@ -24,8 +24,8 @@
                     ?>
                 </td>
                 <td>
-                    <button class="btn btn-primary" onclick="prepareUpdateTeamForm('<?php echo $team->id; ?>')" data-toggle="modal" data-target="#addUpdateTeamModal">Edit</button>
-                    <button class="btn btn-danger" onclick="setTeamID('<?php echo $team->id; ?>')" data-toggle="modal" data-target="#deleteTeamModal">Delete</button>
+                    <button class="btn btn-primary" onclick="prepareUpdateTeamForm('<?php echo $team->id; ?>')" data-toggle="modal" data-target="#addUpdateModal">Edit</button>
+                    <button class="btn btn-danger" onclick="setTeamID('<?php echo $team->id; ?>')" data-toggle="modal" data-target="#deleteModal">Delete</button>
                 </td>
             </tr>
         <?php
@@ -43,7 +43,7 @@
 
     function prepareUpdateTeamForm(teamID) {
         $("#teamID").val(teamID);
-        $("#addUpdateTeamModalTitle").html('Update Team');
+        $("#addUpdateModalTitle").html('Update Team');
         $("#btnSave").hide();
         $("#btnUpdate").show();
         console.log("executing")
