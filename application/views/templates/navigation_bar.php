@@ -10,10 +10,10 @@
                 <a class="nav-link" href="<?php echo base_url('team'); ?>">Teams</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="<?php echo base_url('member'); ?>">Manage Member Members</a>
+                <a class="nav-link" href="<?php echo base_url('member'); ?>">Members</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Manage Member Member Comments</a>
+                <a class="nav-link" href="#">Comments</a>
             </li>
         </ul>
     </div>
