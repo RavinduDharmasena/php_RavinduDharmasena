@@ -19,6 +19,11 @@ class TeamModel extends CI_Model
         return $this->db->select("*")->from("team")->where("status !=","-1")->get()->result();
     }
 
+    public function getActiveTeams()
+    {
+        return $this->db->select("*")->from("team")->where("status","1")->get()->result();
+    }
+
     public function getTeamById($teamID)
     {
         return $this->db->get_where('team', array("id" => $teamID))->result();
@@ -31,17 +36,14 @@ class TeamModel extends CI_Model
         return $this->db->update('team');
     }
 
-    public function updateTeam($teamID,$teamName = null,$teamStatus = null)
+    public function updateTeam($teamID,$teamName,$teamStatus)
     {
         $data = array();
 
-        if($teamName){
-            $data['name'] = $teamName;
-        }
-
-        if($teamStatus){
-            $data['status'] = $teamStatus;
-        }
+        $data = array(
+            'name' => $teamName,
+            'status' => $teamStatus
+        );
 
         $this->db->where('id', $teamID);
         return $this->db->update('team',$data);

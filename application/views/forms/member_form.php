@@ -2,15 +2,23 @@
     <input type="hidden" name="memberID" id="memberID">
     <div class="form-group">
         <label for="memberName">Name</label>
-        <input type="text" class="form-control" id="txtMemberName" name="memberName" aria-describedby="memberName" placeholder="Team Name">
+        <input type="text" class="form-control" id="txtMemberName" name="memberName" aria-describedby="memberName" placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label for="chkmemberRole">Role</label>
+        <select name="memberRole" id="chkmemberRole" class="form-control">
+            <option value="" selected disabled>Please Select</option>
+            <option value="MANAGER">Manager</option>
+            <option value="MEMBER">Team Member</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="memberEmail">Email</label>
-        <input type="text" class="form-control" id="txtMemberEmail" name="memberEmail" aria-describedby="memberName" placeholder="Team Name">
+        <input type="text" class="form-control" id="txtMemberEmail" name="memberEmail" aria-describedby="memberEmail" placeholder="Email">
     </div>
     <div class="form-group">
         <label for="memberJoinedDate">Joined Date</label>
-        <input type="date" class="form-control" id="txtMemberJoinedDate" name="memberJoinedDate" aria-describedby="memberName" placeholder="Team Name">
+        <input type="date" class="form-control" id="txtMemberJoinedDate" name="memberJoinedDate" aria-describedby="memberJoinedDate" placeholder="<?php echo date('Y-m-d'); ?>">
     </div>
     <div class="form-group">
         <label for="chkmemberTeam">Team</label>
@@ -27,11 +35,11 @@
     </div>
     <div class="form-group">
         <label for="memberRoute">Current Route</label>
-        <input type="text" class="form-control" id="txtmemberRoute" name="memberRoute" aria-describedby="memberName" placeholder="Team Name">
+        <input type="text" class="form-control" id="txtmemberRoute" name="memberRoute" aria-describedby="memberRoute" placeholder="Route">
     </div>
     <div class="form-group">
         <label for="memberTelephone">Telephone No</label>
-        <input type="number" class="form-control" id="txtMemberTelephone" name="memberTelephone" aria-describedby="memberName" placeholder="Team Name">
+        <input type="number" class="form-control" id="txtMemberTelephone" name="memberTelephone" aria-describedby="memberTelephone" placeholder="Telephone">
     </div>
     <div class="form-group">
         <label for="memberStatus">Member Status</label>
@@ -58,6 +66,7 @@
         $("#addUpdateTeamModalTitle").html('Add Team');
         $("#btnSave").show();
         $("#btnUpdate").hide();
+        $("#chkmemberRole")[0].selectedIndex = 0
     }
 
     function updateForm() {

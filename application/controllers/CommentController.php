@@ -6,6 +6,7 @@ class CommentController extends CI_Controller {
     {
         parent::__construct();    
         $this->load->model('CommentModel');
+        $this->load->model('MemberModel');
         $this->load->model('TeamModel');
 
     }
@@ -13,6 +14,7 @@ class CommentController extends CI_Controller {
     public function viewManageComments()
     {
         $data['commentData'] = $this->CommentModel->getComments();
+        $data['managerData'] = $this->MemberModel->getManagers();
         $data['teamData'] = $this->TeamModel->getTeams();
         $this->template->load('templates/template','pages/manage_comments',$data);
     }
@@ -22,7 +24,8 @@ class CommentController extends CI_Controller {
         $comment = $this->input->post('comment');
         $teamID = $this->input->post('team');
         $memberID = $this->input->post('member');
-        $insertedID = $this->CommentModel->saveComment($teamID,$memberID,$comment);
+        $managerID = $this->input->post('manager');
+        $insertedID = $this->CommentModel->saveComment($teamID,$memberID,$comment,$managerID);
 
         if($insertedID > 0){
             echo "success####Comment has been saved successfully";
@@ -58,7 +61,8 @@ class CommentController extends CI_Controller {
         $comment = $this->input->post('comment');
         $teamID = $this->input->post('team');
         $memberID = $this->input->post('member');
-        $deleteResult = $this->CommentModel->updateComment($comment,$teamID,$memberID,$commentID);
+        $managerID = $this->input->post('manager');
+        $deleteResult = $this->CommentModel->updateComment($comment,$teamID,$memberID,$commentID,$managerID);
 
         if($deleteResult){
             echo "success####Comment is Updated Successfully";

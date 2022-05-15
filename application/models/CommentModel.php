@@ -3,10 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class CommentModel extends CI_Model
 {
-    public function saveComment($teamID,$memberID,$comment)
+    public function saveComment($teamID,$memberID,$comment,$managerID)
     {
         $data = array(
-            'managerID' => '1',
+            'managerID' => $managerID,
             'status' => '1',
             'memberID' => $memberID, 
             'teamID' => $teamID, 
@@ -41,7 +41,7 @@ class CommentModel extends CI_Model
         return $this->db->update('comment');
     }
 
-    public function updateComment($comment,$teamID,$memberID,$commentID,$managerID = 1)
+    public function updateComment($comment,$teamID,$memberID,$commentID,$managerID)
     {
         $data = array(
             'managerID' => $managerID, 

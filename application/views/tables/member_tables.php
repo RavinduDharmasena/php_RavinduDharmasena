@@ -7,6 +7,7 @@
             <th scope="col">Joined Date</th>
             <th scope="col">Telephone No</th>
             <th scope="col">Team</th>
+            <th scope="col">Role</th>
             <th scope="col">Current Route</th>
             <th scope="col">Status</th>
             <th>Operations</th>
@@ -23,6 +24,7 @@
                 <td><?php echo $member->joined_date; ?></td>
                 <td><?php echo $member->telephone_no; ?></td>
                 <td><?php echo $member->team_name; ?></td>
+                <td><?php echo $member->role; ?></td>
                 <td><?php echo $member->current_route; ?></td>
                 <td>
                     <?php
@@ -72,6 +74,15 @@
                 $("#chkmemberTeam").val(member.teamID);
                 $("#txtmemberRoute").val(member.current_route);
                 $("#txtMemberTelephone").val(member.telephone_no);
+
+                let html = '<option value="" disabled>Please Select</option>';
+                let selected = (member.role === "MANAGER") ? 'selected' : '';
+                html += '<option value="MANAGER" ' + selected + '>Manager</option>';
+
+                selected = (member.role === "MEMBER") ? 'selected' : '';
+                html += '<option value="MEMBER" ' + selected + '>Team Member</option>';
+
+                $("#chkmemberRole").html(html);
 
                 if (member.status === "1") {
                     $("#memberActiveStatus").prop("checked", true);

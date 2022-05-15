@@ -55,7 +55,7 @@
             .done((comment) => {
                 console.log(comment);
                 getMembersByTeamId(comment.teamID);
-                $("#txtareaComment").html(comment.comment);
+                $("#txtAreaComment").html(comment.comment);
                 $("#chkteam").val(comment.teamID);
                 $("#chkMember").val(comment.memberID);
 

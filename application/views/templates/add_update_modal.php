@@ -15,7 +15,7 @@
                 <div id="statusMessage" style="display: none;" class="alert alert-primary"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" id="btnSave" class="btn btn-primary" onclick="submitForm()"><?php echo $addModalSaveButtonCaption; ?></button>
                 <button type="button" id="btnUpdate" class="btn btn-primary" onclick="updateForm()"><?php echo $addModalUpdateButtonCaption; ?></button>
                 <button type="reset" class="btn btn-success">Reset Form</button>
@@ -54,7 +54,7 @@
                 $("#statusMessage").html(message);
                 setTimeout(() => {
                     $("#statusMessage").css('display', 'none');
-                    // location.reload();
+                    location.reload();
                 }, 5000);
             })
             .fail((error) => {

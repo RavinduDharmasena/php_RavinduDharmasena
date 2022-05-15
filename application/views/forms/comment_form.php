@@ -24,9 +24,9 @@
         <select name="manager" id="chkManager" class="form-control">
             <option value="" selected disabled>Please Select</option>
             <?php
-            foreach ($teamData as $team) {
+            foreach ($managerData as $manager) {
             ?>
-                <option value="<?php echo $team->id; ?>"><?php echo $team->name; ?></option>
+                <option value="<?php echo $manager->id; ?>"><?php echo $manager->name; ?></option>
             <?php
             }
             ?>
@@ -34,7 +34,7 @@
     </div>
     <div class="form-group">
         <label for="chkcommentTeam">Comment</label>
-        <textarea class="form-control" name="comment" id="txtareaComment" cols="30" rows="10"></textarea>
+        <textarea class="form-control" name="comment" id="txtAreaComment" cols="30" rows="10"></textarea>
     </div>
 </form>
 
@@ -68,6 +68,10 @@
         $("#addUpdateTeamModalTitle").html('Add Comment');
         $("#btnSave").show();
         $("#btnUpdate").hide();
+        $("#chkteam")[0].selectedIndex = 0
+        $("#chkMember")[0].selectedIndex = 0
+        $("#chkManager")[0].selectedIndex = 0
+        $("#txtAreaComment").html('');
     }
 
     function updateForm() {
