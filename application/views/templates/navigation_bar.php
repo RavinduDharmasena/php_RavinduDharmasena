@@ -13,7 +13,7 @@
                 <a class="nav-link" href="<?php echo base_url('member'); ?>">Members</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Comments</a>
+                <a class="nav-link" href="<?php echo base_url('comment'); ?>">Comments</a>
             </li>
         </ul>
     </div>
