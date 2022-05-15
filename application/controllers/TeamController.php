@@ -18,6 +18,12 @@ class TeamController extends CI_Controller {
     {
         $teamName = $this->input->post('teamName');
         $teamStatus = $this->input->post('teamStatus');
+
+        if(count($this->TeamModel->getTeamsByName($this->input->post('teamName'))) > 0){
+            echo "error####Team already exists";
+            die();
+        }
+
         $insertedID = $this->TeamModel->saveTeam($teamName,$teamStatus);
 
         if($insertedID > 0){

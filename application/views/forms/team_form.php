@@ -28,22 +28,20 @@
 <script>
     function validateForm() {
         let isValid = true;
-        if(!$("#txtTeamName").val()){
+        if (!$("#txtTeamName").val()) {
             $("#teamValidationError").html("Team is required");
             $("#teamValidationError").addClass("show");
             isValid = false;
-        }
-        else{
+        } else {
             $("#teamValidationError").html("");
             $("#teamValidationError").removeClass("show");
         }
 
-        if(!$("[name='teamStatus']:checked").val()){
+        if (!$("[name='teamStatus']:checked").val()) {
             $("#statusValidationError").html("Status is required");
             $("#statusValidationError").addClass("show");
             isValid = false;
-        }
-        else{
+        } else {
             $("#statusValidationError").html("");
             $("#statusValidationError").removeClass("show");
         }
@@ -79,16 +77,16 @@
                     $("#statusMessage").addClass("alert-success");
                     $("#statusMessage").removeClass("alert-danger");
                     $("#statusMessage").removeClass("alert-warning");
+                    setTimeout(() => {
+                        $("#statusMessage").css('display', 'none');
+                        location.reload();
+                    }, 5000);
                 } else {
                     $("#statusMessage").removeClass("alert-success");
                     $("#statusMessage").addClass("alert-danger");
                     $("#statusMessage").removeClass("alert-warning");
                 }
                 $("#statusMessage").html(message);
-                setTimeout(() => {
-                    $("#statusMessage").css('display', 'none');
-                    location.reload();
-                }, 5000);
             })
             .fail((error) => {
                 console.error(error);

@@ -19,6 +19,11 @@ class TeamModel extends CI_Model
         return $this->db->select("*")->from("team")->where("status !=","-1")->get()->result();
     }
 
+    public function getTeamsByName($name)
+    {
+        return $this->db->get_where('team', array("name" => $name))->result();
+    }
+
     public function getActiveTeams()
     {
         return $this->db->select("*")->from("team")->where("status","1")->get()->result();
