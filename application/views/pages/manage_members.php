@@ -9,7 +9,7 @@
     $this->load->view('templates/add_update_modal.php',$addUpdateModalData);
 
     $deleteModalData['deleteModalCaption'] = 'Are you sure that you want to delete this member ?';
-    $deleteModalData['deletePendingCaption'] = 'Deleting team. Hold for a moment';
+    $deleteModalData['deletePendingCaption'] = 'Deleting member. Hold for a moment';
     $deleteModalData['deleteSuccessCaption'] = 'Member deleted succcessfully';
     $deleteModalData['deleteFailCaption'] = 'Member deletion failed';
     
