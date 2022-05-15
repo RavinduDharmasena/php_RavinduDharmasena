@@ -121,7 +121,8 @@
         $("#chkMember")[0].selectedIndex = 0
         $("#chkManager")[0].selectedIndex = 0
         $("#txtAreaComment").html('');
-        $(".error-message").removeClass("show")
+        $(".error-message").removeClass("show");
+        $("#statusMessage").css('display', 'none');
     }
 
     function updateForm() {
@@ -145,16 +146,17 @@
                     $("#statusMessage").addClass("alert-success");
                     $("#statusMessage").removeClass("alert-danger");
                     $("#statusMessage").removeClass("alert-warning");
+                    $("#statusMessage").html(message);
+                    setTimeout(() => {
+                        $("#statusMessage").css('display', 'none');
+                        location.reload();
+                    }, 5000);
                 } else {
                     $("#statusMessage").removeClass("alert-success");
                     $("#statusMessage").addClass("alert-danger");
                     $("#statusMessage").removeClass("alert-warning");
+                    $("#statusMessage").html(message);
                 }
-                $("#statusMessage").html(message);
-                setTimeout(() => {
-                    $("#statusMessage").css('display', 'none');
-                    location.reload();
-                }, 5000);
             })
             .fail((error) => {
                 console.error(error);

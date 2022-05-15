@@ -54,6 +54,7 @@
         $("#addUpdateTeamModalTitle").html('Add Team');
         $("#btnSave").show();
         $("#btnUpdate").hide();
+        $("#statusMessage").css('display', 'none');
     }
 
     function updateForm() {
@@ -77,6 +78,7 @@
                     $("#statusMessage").addClass("alert-success");
                     $("#statusMessage").removeClass("alert-danger");
                     $("#statusMessage").removeClass("alert-warning");
+                    $("#statusMessage").html(message);
                     setTimeout(() => {
                         $("#statusMessage").css('display', 'none');
                         location.reload();
@@ -85,8 +87,8 @@
                     $("#statusMessage").removeClass("alert-success");
                     $("#statusMessage").addClass("alert-danger");
                     $("#statusMessage").removeClass("alert-warning");
+                    $("#statusMessage").html(message);
                 }
-                $("#statusMessage").html(message);
             })
             .fail((error) => {
                 console.error(error);
