@@ -54,7 +54,7 @@
                 $("#statusMessage").html(message);
                 setTimeout(() => {
                     $("#statusMessage").css('display', 'none');
-                    location.reload();
+                    // location.reload();
                 }, 5000);
             })
             .fail((error) => {

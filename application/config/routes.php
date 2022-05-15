@@ -58,8 +58,17 @@ $route['team']['POST'] = 'TeamController/addTeams';
 
 $route['member']['GET'] = 'MemberController/viewManageMembers';
 $route['member/(:num)']['POST'] = 'MemberController/getMemberData';
+$route['member/team/(:num)']['POST'] = 'MemberController/getMembersByTeamId';
 $route['member/delete/(:num)']['POST'] = 'MemberController/deleteMemberById';
 $route['member/update/(:num)']['POST'] = 'MemberController/updateMemberById';
 $route['member']['POST'] = 'MemberController/addMembers';
+$route['404_override'] = '';
+$route['translate_uri_dashes'] = FALSE;
+
+$route['comment']['GET'] = 'CommentController/viewManageComments';
+$route['comment/(:num)']['POST'] = 'CommentController/getCommentData';
+$route['comment/delete/(:num)']['POST'] = 'CommentController/deleteCommentById';
+$route['comment/update/(:num)']['POST'] = 'CommentController/updateCommentById';
+$route['comment']['POST'] = 'CommentController/addComments';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

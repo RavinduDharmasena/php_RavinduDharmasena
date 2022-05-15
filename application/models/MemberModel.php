@@ -33,6 +33,11 @@ class MemberModel extends CI_Model
         return $this->db->get_where('member', array("id" => $memberID))->result();
     }
 
+    public function getMemberByTeamId($teamID)
+    {
+        return $this->db->get_where('member', array("teamID" => $teamID))->result();
+    }
+
     public function deleteMember($memberID)
     {
         $this->db->set('status', '-1');

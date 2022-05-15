@@ -17,6 +17,13 @@ class MemberController extends CI_Controller {
         $this->template->load('templates/template','pages/manage_members',$data);
     }
 
+    public function getMembersByTeamId()
+    {
+        header("Content-Type:allication/json");
+        echo json_encode($this->MemberModel->getMemberByTeamId($this->input->post('teamId')));
+
+    }
+
     public function addMembers()
     {
 
